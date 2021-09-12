@@ -8,6 +8,10 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ishanhere/pdf_project"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

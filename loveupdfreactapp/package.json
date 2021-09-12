@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ishanhere/pdf_project"
   },
-  "author": "Ishan",
+  "author": "https://github.com/ishanhere",
   "license": "MIT",
   "homepage": "/",
   "dependencies": {
