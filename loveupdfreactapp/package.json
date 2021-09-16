@@ -10,7 +10,7 @@
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start"
   },
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:8081/",
   "secure": false,
   "repository": {
     "type": "git",
