@@ -127,7 +127,7 @@ class DoctoPDF extends Component {
             modalLoading: false,
             modalMsg: {
               success: null,
-              err: "Oopps ! something went wrong!! TRY AGAIN \n"
+              err: "Oopps ! something went wrong!!\n Please TRY AGAIN \n"
             }
           },
           () => {
