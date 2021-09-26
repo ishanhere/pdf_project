@@ -13,6 +13,8 @@ const gs = require("ghostscript-node");
 var CloudmersiveConvertApiClient = require("cloudmersive-convert-api-client");
 var defaultClient = CloudmersiveConvertApiClient.ApiClient.instance;
 var Apikey = defaultClient.authentications["Apikey"];
+const nodemailer = require("nodemailer");
+
 Apikey.apiKey = "d389725c-3192-4421-8457-190e099b1799";
 // app.use(express.static(path.join(__dirname, "public")));
 
@@ -32,10 +34,13 @@ app.use(express.json());
 // app.use(express.static("./loveupdfreactapp/build"));
 // app.get("/", "./loveupdfreactapp/public/index.html");
 
-app.get("/", (req, res) => {
-  console.log("there");
-  res.send("This is from express.js");
-  res.sendFile("./loveupdfreactapp/build/index.html");
+process.once("SIGUSR2", function () {
+  process.kill(process.pid, "SIGUSR2");
+});
+
+process.on("SIGINT", function () {
+  // this is only called on ctrl+c, not restart
+  process.kill(process.pid, "SIGINT");
 });
 
 // app.get("/go", (req, res) => {
@@ -55,7 +60,7 @@ app.get("/", (req, res) => {
 // });
 // }
 
-const checkFileType = function(req, file, callback) {
+const checkFileType = function (req, file, callback) {
   const filetypes = /doc|docx/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
@@ -73,15 +78,15 @@ const checkFileType = function(req, file, callback) {
 };
 
 var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "server/uploads");
+  destination: function (req, file, cb) {
+    cb(null, "server/uploads/");
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(
       null,
       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
     );
-  }
+  },
 });
 
 const docxtopdfdemoupload = multer({ storage: storage }); //fileFilter:checkFileType
@@ -89,23 +94,23 @@ const docxtopdfdemoupload = multer({ storage: storage }); //fileFilter:checkFile
 app.post("/v1/doctopdf", docxtopdfdemoupload.single("docFile"), (req, res) => {
   if (req.file) {
     let outputFilePath = Date.now() + "_output.pdf";
-    docxConverter(req.file.path, outputFilePath, function(err, result) {
+
+    docxConverter(req.file.path, outputFilePath, function (err, result) {
       if (err) {
         fs.unlinkSync(req.file.path);
         err.status(400).send({ message: "File Not found !" });
       }
       pdf2base64(outputFilePath)
-        .then(response => {
+        .then((response) => {
           let base64Response = {
-            base64Response: response
+            base64Response: response,
           };
           res.send(base64Response);
           fs.unlinkSync(req.file.path);
           fs.unlinkSync(outputFilePath);
         })
-        .catch(error => {
+        .catch((error) => {
           res.status(400).send({ message: error });
-          console.log("/v1/doctopdf", error);
         });
     });
   } else {
@@ -157,61 +162,101 @@ const pptUpload = multer({ storage: storage });
 app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
   var inputFilePPT = Buffer.from(fs.readFileSync(req.file.path).buffer);
   outputPptToPdfFilePath = Date.now() + "_output.pdf";
-  apiInstance.convertDocumentPptxToPdf(inputFilePPT, function(
-    error,
-    data,
-    response
-  ) {
+  apiInstance.convertDocumentPptxToPdf(
+    inputFilePPT,
+    function (error, data, response) {
+      if (error) {
+        console.error(error);
+        res.status(400).send({ message: "This is an error from server!" });
+      } else {
+        fs.writeFile(outputPptToPdfFilePath, data, "binary", function (err) {
+          if (err) {
+            console.log(err);
+            res.status(400).send({ message: "This is an error from server!" });
+          } else {
+            console.log("The file was saved!");
+            pdf2base64(outputPptToPdfFilePath)
+              .then((response) => {
+                let base64Response = {
+                  base64Response: response,
+                };
+                res.send(base64Response);
+                fs.unlinkSync(req.file.path);
+                fs.unlinkSync(outputPptToPdfFilePath);
+              })
+              .catch((error) => {
+                res
+                  .status(400)
+                  .send({ message: "This is an error from server!" });
+                console.log("v1/pptToPDF", error); //Exepection error....
+              });
+            // apiInstance = new CloudmersiveConvertApiClient.EditPdfApi();
+            // inputFile2 = Buffer.from(fs.readFileSync(outputPptToPdfFilePath).buffer);
+            // var callback2 = function(error, data, response) {
+            //     if (error) {
+            //     console.error(error);
+            //     } else {
+
+            //     fs.writeFile(outputPptToPdfFilePath, data,  "binary",function(err) {
+            //         if(err) {
+            //             console.log(err);
+            //         } else {
+            //             console.log("The second file was saved!");
+            //         }
+            //     });
+
+            //     console.log('Successful - done.');
+            //     }
+            // };
+
+            // apiInstance.editPdfRasterize(inputFile2, callback2);
+          }
+        });
+      }
+    }
+  );
+});
+
+const contactEmail = nodemailer.createTransport({
+  host: "smtp.zoho.in",
+  secure: true,
+  port: 465,
+  auth: {
+    user: "support@loveupdf.com",
+    pass: "sLb0G4zvFK9E",
+  },
+});
+
+contactEmail.verify((error) => {
+  if (error) {
+    console.log("erroe456", error);
+  } else {
+    console.log("Ready to Send");
+  }
+});
+
+app.post("/v1/contact", (req, res) => {
+  console.log("threr");
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+  const mail = {
+    from: "support@loveupdf.com",
+    to: "support@loveupdf.com",
+    subject: "Contact Form Submission",
+    html: `<p>Name: ${name}</p>
+           <p>Email: ${email}</p>
+           <p>Message: ${message}</p>`,
+  };
+  contactEmail.sendMail(mail, (error) => {
+    console.log("error123", error);
     if (error) {
-      console.error(error);
-      res.status(400).send({ message: "This is an error from server!" });
+      res.json({ status: "ERROR" });
     } else {
-      fs.writeFile(outputPptToPdfFilePath, data, "binary", function(err) {
-        if (err) {
-          console.log(err);
-          res.status(400).send({ message: "This is an error from server!" });
-        } else {
-          console.log("The file was saved!");
-          pdf2base64(outputPptToPdfFilePath)
-            .then(response => {
-              let base64Response = {
-                base64Response: response
-              };
-              res.send(base64Response);
-              fs.unlinkSync(req.file.path);
-              fs.unlinkSync(outputPptToPdfFilePath);
-            })
-            .catch(error => {
-              res
-                .status(400)
-                .send({ message: "This is an error from server!" });
-              console.log("v1/pptToPDF", error); //Exepection error....
-            });
-          // apiInstance = new CloudmersiveConvertApiClient.EditPdfApi();
-          // inputFile2 = Buffer.from(fs.readFileSync(outputPptToPdfFilePath).buffer);
-          // var callback2 = function(error, data, response) {
-          //     if (error) {
-          //     console.error(error);
-          //     } else {
-
-          //     fs.writeFile(outputPptToPdfFilePath, data,  "binary",function(err) {
-          //         if(err) {
-          //             console.log(err);
-          //         } else {
-          //             console.log("The second file was saved!");
-          //         }
-          //     });
-
-          //     console.log('Successful - done.');
-          //     }
-          // };
-
-          // apiInstance.editPdfRasterize(inputFile2, callback2);
-        }
-      });
+      res.json({ status: "Message Sent" });
     }
   });
 });
 
-const PORT = 3001;
+const PORT = 8080;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

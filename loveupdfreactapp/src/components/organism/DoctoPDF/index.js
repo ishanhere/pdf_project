@@ -18,15 +18,15 @@ class DoctoPDF extends Component {
     modalLoading: false,
     modalMsg: {
       err: null,
-      success: null
-    }
+      success: null,
+    },
   };
 
-  onFilesChange = files => {
+  onFilesChange = (files) => {
     this.setState(
       {
         files,
-        hasFiles: files.length > 0 ? true : false
+        hasFiles: files.length > 0 ? true : false,
       },
       () => {
         // console.log(this.state)
@@ -42,7 +42,7 @@ class DoctoPDF extends Component {
     console.log("[LOG] Error code " + error.code + ": " + error.message);
   };
 
-  filesRemoveOne = file => {
+  filesRemoveOne = (file) => {
     this.refs.files.removeFile(file);
   };
 
@@ -53,8 +53,8 @@ class DoctoPDF extends Component {
         modalLoading: false,
         modalMsg: {
           err: null,
-          success: null
-        }
+          success: null,
+        },
       },
       () => {
         this.filesRemoveAll();
@@ -66,7 +66,7 @@ class DoctoPDF extends Component {
     this.setState(
       {
         files: [],
-        hasFiles: false
+        hasFiles: false,
       },
       () => {
         this.refs.files.removeFiles();
@@ -81,7 +81,7 @@ class DoctoPDF extends Component {
         files: this.state.files,
         hasFiles: false,
         modalOpen: true,
-        modalLoading: true
+        modalLoading: true,
       },
       () => {}
     );
@@ -91,9 +91,9 @@ class DoctoPDF extends Component {
       url: "/v1/doctopdf",
       method: "POST",
       headers: { "Content-Type": "multipart/form-data" },
-      data: formData
+      data: formData,
     })
-      .then(function(response) {
+      .then(function (response) {
         const downloadLink = document.createElement("a");
         downloadLink.href =
           "data:application/pdf;base64," + response.data.base64Response;
@@ -113,11 +113,11 @@ class DoctoPDF extends Component {
           modalMsg: {
             success:
               "Doc To Pdf Convertion Completed successfully and downloaded!\n",
-            err: null
-          }
+            err: null,
+          },
         });
       })
-      .catch(function(response) {
+      .catch(function (response) {
         console.log("doc err", response);
         console.log("this1", this1);
 
@@ -127,8 +127,8 @@ class DoctoPDF extends Component {
             modalLoading: false,
             modalMsg: {
               success: null,
-              err: "Oopps ! something went wrong!!\n Please TRY AGAIN \n"
-            }
+              err: "Oopps ! something went wrong!!\n Please TRY AGAIN \n",
+            },
           },
           () => {
             console.log("[LOG] Closed modal");
@@ -167,7 +167,7 @@ class DoctoPDF extends Component {
             <Grid item className={classes.dropFilesGridZone}>
               <div className="files-list">
                 <ul>
-                  {this.state.files.map(file => (
+                  {this.state.files.map((file) => (
                     <li className="files-list-item" key={file.id}>
                       <div className="files-list-item-content">
                         <span className="files-list-item-content-item files-list-item-content-item-1 pdfInfoSpan">
@@ -206,7 +206,7 @@ class DoctoPDF extends Component {
               variant="contained"
               color="primary"
               disabled={!this.state.hasFiles}
-              onClick={e => this.doctoPDF(e)}
+              onClick={(e) => this.doctoPDF(e)}
             >
               Convert DOC file to PDF
             </Button>
@@ -232,13 +232,13 @@ class DoctoPDF extends Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   pdfInfoSpan: {
     marginLeft: "10px",
-    padding: "10px"
+    padding: "10px",
   },
   dropFilesGridZone: {
-    width: "20%"
+    width: "20%",
   },
   dropFilesZone: {
     padding: "2em",
@@ -248,17 +248,17 @@ const styles = theme => ({
     display: "flex",
     flexWrap: "wrap",
     boxSizing: "border-box",
-    textAlign: "center"
+    textAlign: "center",
   },
   dropFilesZoneDiv: {
-    width: "100%"
+    width: "100%",
   },
   dropFilesWarningGridZone: {
     width: "70%",
     textAlign: "center",
     color: "red",
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });
 
 export default withStyles(styles, { name: "MuiFilesDragDrop" })(DoctoPDF);
