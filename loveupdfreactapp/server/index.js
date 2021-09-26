@@ -31,7 +31,7 @@ app.use(express.json());
 
 // if (process.env.NODE_ENV === "production") {
 // Exprees will serve up production assets
-// app.use(express.static("./loveupdfreactapp/build"));
+app.use(express.static("../../loveupdfreactapp/build"));
 // app.get("/", "./loveupdfreactapp/public/index.html");
 
 process.once("SIGUSR2", function () {
