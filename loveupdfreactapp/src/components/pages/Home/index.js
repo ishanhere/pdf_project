@@ -1,111 +1,118 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import LandingPage from './LandingPage';
-import MergePDFS from '../../organism/MergePDFS';
-import ImagetoPDF from '../../organism/ImagetoPDF';
-import DoctoPDF from '../../organism/DoctoPDF';
-import PptToPDF from '../../organism/PptToPDF';
-import Route from '../../organism/Routeing/Routes'; 
-import Header from '../../organism/Header';
-import { spacing } from '@material-ui/system';
+import React from "react";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import LandingPage from "./LandingPage";
+import MergePDFS from "../../organism/MergePDFS";
+import ImagetoPDF from "../../organism/ImagetoPDF";
+import DoctoPDF from "../../organism/DoctoPDF";
+import PptToPDF from "../../organism/PptToPDF";
+import Route from "../../organism/Routeing/Routes";
+import Header from "../../organism/Header";
+import { spacing } from "@material-ui/system";
+import ContactForm from "./ContactForm";
+import AboutUs from "./AboutUs";
 
-const Home = props => {
+const Home = (props) => {
   const { classes } = props;
 
   return (
     <>
-     <Header classes={classes}/>
-      <main className={classes.heroUnit} style={{textAlign:'center'}}>
-          <div className={classes.heroContent}>
-            <Route path='/' classes={classes}>
-              <LandingPage/>
-            </Route>
-            <Route path='/mergepdfs' >
-              <MergePDFS/>
-            </Route>
-            <Route path='/imgstopdf' >
-              <ImagetoPDF/>
-            </Route>
-            <Route path='/doctopdf' >
-              <DoctoPDF/>
-            </Route>
-            <Route path='/ppttopdf' >
-              <PptToPDF/>
-            </Route>
-          </div>
+      <Header classes={classes} />
+      <main className={classes.heroUnit} style={{ textAlign: "center" }}>
+        <div className={classes.heroContent}>
+          <Route path="/" classes={classes}>
+            <LandingPage />
+          </Route>
+          <Route path="/mergepdfs">
+            <MergePDFS />
+          </Route>
+          <Route path="/imgstopdf">
+            <ImagetoPDF />
+          </Route>
+          <Route path="/doctopdf">
+            <DoctoPDF />
+          </Route>
+          <Route path="/ppttopdf">
+            <PptToPDF />
+          </Route>
+          <Route path="/contactus">
+            <ContactForm />
+          </Route>
+          <Route path="/aboutus">
+            <AboutUs />
+          </Route>
+        </div>
       </main>
     </>
   );
-}
+};
 
 Home.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styles = theme => ({
+const styles = (theme) => ({
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
   icon: {
     marginRight: theme.spacing.unit * 2,
   },
   heroUnit: {
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
   },
   heroContent: {
     // maxWidth: 600,
-    margin: '0 auto',
+    margin: "0 auto",
     // textAlign:'center',
     padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
   },
   heroButtons: {
     marginTop: theme.spacing.unit * 4,
   },
-  landingPage:{
-    width: '100%',
-		display: 'flex',
-		flexWrap: 'wrap',
-		boxSizing: 'border-box',
-		textAlign: 'center'
+  landingPage: {
+    width: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    boxSizing: "border-box",
+    textAlign: "center",
   },
   layout: {
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
       width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
   cardGrid: {
     padding: `${theme.spacing.unit * 8}px 0`,
   },
   card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: "56.25%", // 16:9
   },
   cardContent: {
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     padding: theme.spacing.unit * 6,
   },
-  links:{
-    color:'white',
+  links: {
+    color: "white",
     marginLeft: theme.spacing.unit * 3,
-    marginRight:theme.spacing.unit * 3,
-
-  }
+    marginRight: theme.spacing.unit * 3,
+  },
 });
 
 export default withStyles(styles)(Home);
