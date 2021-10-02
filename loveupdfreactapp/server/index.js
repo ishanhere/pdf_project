@@ -29,11 +29,6 @@ app.use(pino);
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-// if (process.env.NODE_ENV === "production") {
-// Exprees will serve up production assets
-app.use(express.static("../../loveupdfreactapp/build"));
-// app.get("/", "./loveupdfreactapp/public/index.html");
-
 process.once("SIGUSR2", function () {
   process.kill(process.pid, "SIGUSR2");
 });
@@ -43,22 +38,11 @@ process.on("SIGINT", function () {
   process.kill(process.pid, "SIGINT");
 });
 
-// app.get("/go", (req, res) => {
-//   console.log("there");
-//   res.send("This is from express.js");
-//   res.sendFile("./loveupdfreactapp/public/index_1.html");
-// });
+app.use(express.static(path.join(__dirname, "../build")));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(
-//     path.resolve(
-//       __dirname,
-//       "./loveupdfreactapp/build",
-//       "./loveupdfreactapp/public/index.html"
-//     )
-//   );
-// });
-// }
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
 
 const checkFileType = function (req, file, callback) {
   const filetypes = /doc|docx/;
@@ -99,6 +83,7 @@ app.post("/v1/doctopdf", docxtopdfdemoupload.single("docFile"), (req, res) => {
       if (err) {
         fs.unlinkSync(req.file.path);
         err.status(400).send({ message: "File Not found !" });
+        fs.unlinkSync(outputFilePath);
       }
       pdf2base64(outputFilePath)
         .then((response) => {
@@ -106,11 +91,15 @@ app.post("/v1/doctopdf", docxtopdfdemoupload.single("docFile"), (req, res) => {
             base64Response: response,
           };
           res.send(base64Response);
-          fs.unlinkSync(req.file.path);
-          fs.unlinkSync(outputFilePath);
+          // fs.unlinkSync(req.file.path);
+          // fs.unlinkSync(outputFilePath);
         })
         .catch((error) => {
           res.status(400).send({ message: error });
+        })
+        .finally(() => {
+          fs.unlinkSync(req.file.path);
+          fs.unlinkSync(outputFilePath);
         });
     });
   } else {
@@ -166,12 +155,14 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
     inputFilePPT,
     function (error, data, response) {
       if (error) {
-        console.error(error);
+        console.error("is1" + error);
+        fs.unlinkSync(outputPptToPdfFilePath);
         res.status(400).send({ message: "This is an error from server!" });
       } else {
         fs.writeFile(outputPptToPdfFilePath, data, "binary", function (err) {
           if (err) {
-            console.log(err);
+            console.log("is2" + err);
+            fs.unlinkSync(outputPptToPdfFilePath);
             res.status(400).send({ message: "This is an error from server!" });
           } else {
             console.log("The file was saved!");
@@ -181,14 +172,16 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
                   base64Response: response,
                 };
                 res.send(base64Response);
-                fs.unlinkSync(req.file.path);
-                fs.unlinkSync(outputPptToPdfFilePath);
               })
               .catch((error) => {
                 res
                   .status(400)
                   .send({ message: "This is an error from server!" });
                 console.log("v1/pptToPDF", error); //Exepection error....
+              })
+              .finally(() => {
+                fs.unlinkSync(req.file.path);
+                fs.unlinkSync(outputPptToPdfFilePath);
               });
             // apiInstance = new CloudmersiveConvertApiClient.EditPdfApi();
             // inputFile2 = Buffer.from(fs.readFileSync(outputPptToPdfFilePath).buffer);
