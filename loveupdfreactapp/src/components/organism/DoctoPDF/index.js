@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Files from "react-files";
+import Typography from "@material-ui/core/Typography";
 import ModalLoadingAlert from "../ModalLoadingAlert";
 import PDFProvider from "../../../lib/provider/pdfProvider";
 import { saveSync } from "save-file";
@@ -141,6 +142,9 @@ class DoctoPDF extends Component {
     const { classes } = this.props;
     return (
       <div className="files">
+        <Typography variant="h4">
+          Drop Word(.doc,.docx) file and turn it into PDF File.
+        </Typography>
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
             <Files

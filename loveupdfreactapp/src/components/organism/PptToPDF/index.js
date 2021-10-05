@@ -3,6 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Files from "react-files";
+import Typography from "@material-ui/core/Typography";
+
 import ModalLoadingAlert from "../ModalLoadingAlert";
 import PDFProvider from "../../../lib/provider/pdfProvider";
 import { saveSync } from "save-file";
@@ -18,15 +20,15 @@ class PptToPDF extends Component {
     modalLoading: false,
     modalMsg: {
       err: null,
-      success: null
-    }
+      success: null,
+    },
   };
 
-  onFilesChange = files => {
+  onFilesChange = (files) => {
     this.setState(
       {
         files,
-        hasFiles: files.length > 0 ? true : false
+        hasFiles: files.length > 0 ? true : false,
       },
       () => {
         // console.log(this.state)
@@ -42,7 +44,7 @@ class PptToPDF extends Component {
     console.log("[LOG] Error code " + error.code + ": " + error.message);
   };
 
-  filesRemoveOne = file => {
+  filesRemoveOne = (file) => {
     this.refs.files.removeFile(file);
   };
 
@@ -53,8 +55,8 @@ class PptToPDF extends Component {
         modalLoading: false,
         modalMsg: {
           err: null,
-          success: null
-        }
+          success: null,
+        },
       },
       () => {
         this.filesRemoveAll();
@@ -66,7 +68,7 @@ class PptToPDF extends Component {
     this.setState(
       {
         files: [],
-        hasFiles: false
+        hasFiles: false,
       },
       () => {
         this.refs.files.removeFiles();
@@ -84,7 +86,7 @@ class PptToPDF extends Component {
         files: this.state.files,
         hasFiles: false,
         modalOpen: true,
-        modalLoading: true
+        modalLoading: true,
       },
       () => {}
     );
@@ -92,9 +94,9 @@ class PptToPDF extends Component {
       url: "/v1/pptToPDF",
       method: "POST",
       headers: { "Content-Type": "multipart/form-data" },
-      data: formData
+      data: formData,
     })
-      .then(function(response) {
+      .then(function (response) {
         const downloadLink = document.createElement("a");
         downloadLink.href =
           "data:application/pdf;base64," + response.data.base64Response;
@@ -113,19 +115,19 @@ class PptToPDF extends Component {
           modalMsg: {
             success:
               "PPT To PDF Convertion Completed successfully and downloaded!",
-            err: null
-          }
+            err: null,
+          },
         });
       })
-      .catch(function(response) {
+      .catch(function (response) {
         this1.setState(
           {
             modalOpen: true,
             modalLoading: false,
             modalMsg: {
               success: null,
-              err: "Oopps ! something went wrong!!\n Please TRY AGAIN \n"
-            }
+              err: "Oopps ! something went wrong!!\n Please TRY AGAIN \n",
+            },
           },
           () => {
             console.log("[LOG] Closed modal");
@@ -138,6 +140,9 @@ class PptToPDF extends Component {
     const { classes } = this.props;
     return (
       <div className="files">
+        <Typography variant="h4">
+          Drop PPT(.ppt,.pptx) file and turn it into PDF File.
+        </Typography>
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
             <Files
@@ -164,7 +169,7 @@ class PptToPDF extends Component {
             <Grid item className={classes.dropFilesGridZone}>
               <div className="files-list">
                 <ul>
-                  {this.state.files.map(file => (
+                  {this.state.files.map((file) => (
                     <li className="files-list-item" key={file.id}>
                       <div className="files-list-item-content">
                         <span className="files-list-item-content-item files-list-item-content-item-1 pdfInfoSpan">
@@ -203,7 +208,7 @@ class PptToPDF extends Component {
               variant="contained"
               color="primary"
               disabled={!this.state.hasFiles}
-              onClick={e => this.pptToPDF(e)}
+              onClick={(e) => this.pptToPDF(e)}
             >
               Convert PPT file to PDF
             </Button>
@@ -229,13 +234,13 @@ class PptToPDF extends Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   pdfInfoSpan: {
     marginLeft: "10px",
-    padding: "10px"
+    padding: "10px",
   },
   dropFilesGridZone: {
-    width: "20%"
+    width: "20%",
   },
   dropFilesZone: {
     padding: "2em",
@@ -245,17 +250,17 @@ const styles = theme => ({
     display: "flex",
     flexWrap: "wrap",
     boxSizing: "border-box",
-    textAlign: "center"
+    textAlign: "center",
   },
   dropFilesZoneDiv: {
-    width: "100%"
+    width: "100%",
   },
   dropFilesWarningGridZone: {
     width: "70%",
     textAlign: "center",
     color: "red",
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });
 
 export default withStyles(styles, { name: "MuiFilesDragDrop" })(PptToPDF);
