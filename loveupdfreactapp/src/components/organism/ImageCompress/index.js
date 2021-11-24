@@ -33,6 +33,42 @@ class ImageCompress extends Component {
         );
     };
 
+    onFilesError = (error, file) => {
+        console.log("[LOG] Error code " + error.code + ": " + error.message);
+      };
+
+      filesRemoveOne = (file) => {
+        this.refs.files.removeFile(file);
+      };
+
+    filesClearAndRemoveAll = () => {
+        this.setState(
+          {
+            modalOpen: false,
+            modalLoading: false,
+            modalMsg: {
+              err: null,
+              success: null,
+            },
+          },
+          () => {
+            this.filesRemoveAll();
+          }
+        );
+      };
+
+      filesRemoveAll = () => {
+        this.setState(
+          {
+            files: [],
+            hasFiles: false,
+          },
+          () => {
+            this.refs.files.removeFiles();
+          }
+        );
+      };
+
     startImgCompression = () => {
         for(var i=0; i < this.state.files.length; i++) {
             let fileReader = new FileReader();
@@ -72,14 +108,22 @@ class ImageCompress extends Component {
               console.log(newImage)
               var a = document.createElement("a");
               a.href = newImage
-                a.download = "Image.png"; //File name Here
+                a.download = "loveupdf_img_compress_" + new Date().toISOString().replace(":","_").replace("T","_").replace("Z","") + ".pdf";
                 a.click();
-              window.location.href = newImage;
             }
             img.src = e.target.result
           }
           fileReader.readAsDataURL(this.state.files[i])
         }
+        this.setState({
+            modalOpen: true,
+            modalLoading: false,
+            modalMsg: {
+              success:
+                "Image compression Completed successfully and downloaded!\n",
+              err: null,
+            },
+          });
     }
 
     render() {
@@ -109,6 +153,45 @@ class ImageCompress extends Component {
                         </Files>
                     </Grid>
                 </Grid>
+
+                <Grid container spacing={32} justify="center">
+                    {this.state.files.length > 0 ? (
+                        <Grid item className={classes.dropFilesGridZone}>
+                        <div className="files-list">
+                            <ul>
+                            {this.state.files.map((file) => (
+                                <li className="files-list-item" key={file.id}>
+                                <div className="files-list-item-content">
+                                    <span className="files-list-item-content-item files-list-item-content-item-1 pdfInfoSpan">
+                                    {file.name}
+                                    </span>
+                                    <span className="files-list-item-content-item files-list-item-content-item-2 pdfInfoSpan">
+                                    {" "}
+                                    - {file.sizeReadable}
+                                    </span>
+                                    {/* <DeleteForeverOutlinedIcon/>s */}
+                                </div>
+                                <div
+                                    id={file.id}
+                                    className="files-list-item-remove"
+                                    onClick={this.filesRemoveOne.bind(this, file)} // eslint-disable-line
+                                />
+                                </li>
+                            ))}
+                            </ul>
+                        </div>
+                        </Grid>
+                    ) : (
+                        <Grid
+                        item
+                        className={classes.dropFilesWarningGridZone}
+                        style={{ margin: 20 }}
+                        >
+                        <div className="files-list">No files selected!</div>
+                        </Grid>
+                    )}
+                </Grid>
+
                 <Grid container spacing={16} justify="center" className={classes.btnGrid}>
                     <Grid item className={classes.btn}>
                         <Button
@@ -130,6 +213,13 @@ class ImageCompress extends Component {
                         </Button>
                     </Grid>
                 </Grid>
+
+                <ModalLoadingAlert
+                    isOpen={this.state.modalOpen}
+                    isLoading={this.state.modalLoading}
+                    msg={this.state.modalMsg}
+                    clearModalStatus={this.filesClearAndRemoveAll}
+                />
             </div>
         );
     }
