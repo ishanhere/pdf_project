@@ -9,6 +9,7 @@ import MergePDFS from "../../organism/MergePDFS";
 import ImagetoPDF from "../../organism/ImagetoPDF";
 import DoctoPDF from "../../organism/DoctoPDF";
 import PptToPDF from "../../organism/PptToPDF";
+import ImageCompress from "../../organism/ImageCompress"
 import Route from "../../organism/Routeing/Routes";
 import Header from "../../organism/Header";
 import { spacing } from "@material-ui/system";
@@ -38,6 +39,9 @@ const Home = (props) => {
           </Route>
           <Route path="/ppttopdf">
             <PptToPDF />
+          </Route>
+          <Route path="/imgcompress">
+            <ImageCompress />
           </Route>
           <Route path="/contactus">
             <ContactForm />
