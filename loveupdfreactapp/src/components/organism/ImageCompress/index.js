@@ -108,7 +108,7 @@ class ImageCompress extends Component {
               console.log(newImage)
               var a = document.createElement("a");
               a.href = newImage
-                a.download = "loveupdf_img_compress_" + new Date().toISOString().replace(":","_").replace("T","_").replace("Z","") + ".pdf";
+                a.download = "loveupdf_img_compress_" + new Date().toISOString().replace(":","_").replace("T","_").replace("Z","") + ".jpeg";
                 a.click();
             }
             img.src = e.target.result
