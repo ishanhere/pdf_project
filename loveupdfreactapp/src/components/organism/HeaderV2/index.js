@@ -76,7 +76,7 @@ export default function App() {
 
   const changeRoute = (event, href) => {
     if (event.metaKey || event.ctrlKey) return;
-
+    setOpen(!open);
     event.preventDefault();
     window.history.pushState({}, "", href);
     const navEvent = new PopStateEvent("popstate");
