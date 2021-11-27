@@ -14,8 +14,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from '@material-ui/core/Collapse';
 // import { ListItemButton } from '@material-ui/core';
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+// import InboxIcon from "@material-ui/icons/MoveToInbox";
+// import MailIcon from "@material-ui/icons/Mail";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import MenuIcon from "@material-ui/icons/Menu";
@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth
   },
   menuButton: {
+    position: 'fixed',
+    left: '16px',
+    top: '0px',
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
       display: "none"
@@ -52,6 +55,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3)
+  },
+  headerIcon: {
+    width: '100%',
+    textAlign: 'center'
   }
 }));
 
@@ -62,6 +69,7 @@ export default function App() {
 
   const [open, setOpen] = React.useState(false);
   const [openPdfDrawer, setPdfOpen] = React.useState(true);
+  const [openImageDrawer, setImageOpen] = React.useState(true);
 
   const toggleDrawer = event => {
     if (
@@ -90,6 +98,11 @@ export default function App() {
     setPdfOpen(!openPdfDrawer);
   };
 
+  const handleImageClick = () => {
+    console.log("called")
+  setImageOpen(!openImageDrawer);
+};
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -104,9 +117,9 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap onClick={(e) => changeRoute(e, '/')}>
-            Love U PDF
-          </Typography>
+        <Typography variant="h6" noWrap onClick={(e) => changeRoute(e, '/')} className={classes.headerIcon}>
+          Love U PDF
+        </Typography>
         </Toolbar>
       </AppBar>
         <Drawer
@@ -126,7 +139,7 @@ export default function App() {
                     {/* <ListItemIcon>
                     <InboxIcon />
                     </ListItemIcon> */}
-                    <ListItemText primary="Image" />
+                    <ListItemText primary="PDF Operations" />
                     {openPdfDrawer ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse in={openPdfDrawer} timeout="auto" unmountOnExit>
@@ -155,29 +168,43 @@ export default function App() {
                         </ListItemIcon> */}
                         <ListItemText primary="Convert PPT To PDF" />
                     </ListItem>
-                    <ListItem button onClick={(e) => changeRoute(e, '/contactus')}>
-                        {/* <ListItemIcon>
-                        <InboxIcon />
-                        </ListItemIcon> */}
-                        <ListItemText primary="Contact US" />
-                    </ListItem>
-                    <ListItem button onClick={(e) => changeRoute(e, '/aboutus')}>
-                        {/* <ListItemIcon>
-                        <InboxIcon />
-                        </ListItemIcon> */}
-                        <ListItemText primary="About US" />
-                    </ListItem>
                     </List>
                 </Collapse>
             </List>
             <Divider />
             <List>
-                <ListItem button onClick={(e) => changeRoute(e, '/imgcompress')}>
+                <ListItem button onClick={handleImageClick}>
                     {/* <ListItemIcon>
                         <InboxIcon />
                     </ListItemIcon> */}
-                    <ListItemText primary="Compress Image" />
+                    <ListItemText primary="Image Operations" />
+                    {openImageDrawer ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
+                <Collapse in={openImageDrawer} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      <ListItem button onClick={(e) => changeRoute(e, '/imgcompress')}>
+                        {/* <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon> */}
+                        <ListItemText primary="Compress Image" />
+                      </ListItem>
+                    </List>
+                </Collapse>
+            </List>
+            <Divider />
+            <List>
+              <ListItem button onClick={(e) => changeRoute(e, '/contactus')}>
+                  {/* <ListItemIcon>
+                  <InboxIcon />
+                  </ListItemIcon> */}
+                  <ListItemText primary="Contact US" />
+              </ListItem>
+              <ListItem button onClick={(e) => changeRoute(e, '/aboutus')}>
+                  {/* <ListItemIcon>
+                  <InboxIcon />
+                  </ListItemIcon> */}
+                  <ListItemText primary="About US" />
+              </ListItem>
             </List>
         </Drawer>
     </div>
