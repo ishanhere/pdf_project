@@ -115,7 +115,7 @@ class ImagetoPDF extends Component {
     const { classes } = this.props;
 
     return (
-      <div className="files">
+      <div className={classes.containerDiv}>
         <Typography variant="h4">
           Drop IMAGES and turn them to PDF in No Time.
         </Typography>
@@ -178,21 +178,23 @@ class ImagetoPDF extends Component {
           )}
         </Grid>
 
-        <Grid container spacing={16} justify="center">
-          <Grid item>
+        <Grid container spacing={16} justify="center" className={classes.gridContainer}>
+          <Grid item className={classes.btnGrid}>
             <Button
               variant="contained"
               color="primary"
+              className={classes.btn}
               disabled={!this.state.hasFiles}
               onClick={this.startIMGtoPDF}
             >
               Start creating pdf
             </Button>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.btnGrid}>
             <Button
               variant="outlined"
               color="secondary"
+              className={classes.btn}
               onClick={this.filesClearAndRemoveAll}
             >
               Clear selection
@@ -212,12 +214,27 @@ class ImagetoPDF extends Component {
 }
 
 const styles = (theme) => ({
+  containerDiv: {
+    marginTop: '20px',
+    width: "30%",
+    marginLeft: 'calc((100% - 30% + 200px) / 2)',
+    marginRight: 'calc((100% - 30% + 200px) / 2)',
+    ['@media (max-width:900px)']: {
+      width: "90%",
+      marginLeft: "5%",
+      marginRight: "5%",
+    }
+  },
   pdfInfoSpan: {
     marginLeft: "10px",
     padding: "10px",
   },
   dropFilesGridZone: {
-    width: "20%",
+    width: "100%",
+    marginTop: '10px',
+    ['@media (max-width:900px)']: {
+      width: "100%"
+    }
   },
   dropFilesZone: {
     padding: "2em",
@@ -238,6 +255,23 @@ const styles = (theme) => ({
     color: "red",
     fontWeight: "bold",
   },
+  gridContainer: {
+    marginTop: '20px'
+  },
+  btnGrid: {
+    paddingRight: '10px',
+    ['@media (max-width:900px)']: {
+      paddingRight: '0',
+      width: '100%',
+      marginTop: '10px'
+    }
+  },
+  btn: {
+      ['@media (max-width:900px)']: {
+        display: 'block',
+        width: '100%'
+      }
+  }
 });
 
 export default withStyles(styles, { name: "MuiFilesDragDrop" })(ImagetoPDF);
