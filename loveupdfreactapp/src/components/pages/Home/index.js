@@ -12,6 +12,7 @@ import PptToPDF from "../../organism/PptToPDF";
 import ImageCompress from "../../organism/ImageCompress"
 import Route from "../../organism/Routeing/Routes";
 import Header from "../../organism/Header";
+import HeaderV2 from "../../organism/HeaderV2";
 import { spacing } from "@material-ui/system";
 import ContactForm from "./ContactForm";
 import AboutUs from "./AboutUs";
@@ -22,7 +23,7 @@ const Home = (props) => {
 
   return (
     <>
-      <Header classes={classes} />
+      <HeaderV2 />
       <main className={classes.heroUnit} style={{ textAlign: "center" }}>
         <div className={classes.heroContent}>
           <Route path="/" classes={classes}>
@@ -63,9 +64,6 @@ Home.propTypes = {
 };
 
 const styles = (theme) => ({
-  appBar: {
-    position: "relative",
-  },
   icon: {
     marginRight: theme.spacing.unit * 2,
   },
