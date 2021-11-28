@@ -34,7 +34,7 @@ class ImageCompress extends Component {
     };
 
     onFilesError = (error, file) => {
-        console.log("[LOG] Error code " + error.code + ": " + error.message);
+        // console.log("[LOG] Error code " + error.code + ": " + error.message);
       };
 
       filesRemoveOne = (file) => {
@@ -105,7 +105,7 @@ class ImageCompress extends Component {
               }
               ctx.drawImage(img, widthPadding, heightPadding, width, height)
               const newImage = canvas.toDataURL('image/jpeg')
-              console.log(newImage)
+              // console.log(newImage)
               var a = document.createElement("a");
               a.href = newImage
                 a.download = "loveupdf_img_compress_" + new Date().toISOString().replace(":","_").replace("T","_").replace("Z","") + ".jpeg";

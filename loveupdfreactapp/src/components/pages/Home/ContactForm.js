@@ -24,7 +24,7 @@ class ContactForm extends Component {
   // const [status, setStatus] = useState("Send");
 
   handleSubmit = (e) => {
-    console.log(e);
+    // console.log(e);
     e.preventDefault();
     this.setState({ status: "Sending..." });
     const { name, email, message } = e.target.elements;
@@ -51,7 +51,7 @@ class ContactForm extends Component {
         });
       })
       .catch(function (response) {
-        console.log("doc err", response);
+        // console.log("doc err", response);
         this.setState(
           {
             modalOpen: true,

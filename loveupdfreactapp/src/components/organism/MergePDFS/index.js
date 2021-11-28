@@ -122,7 +122,7 @@ class MergePDFS extends Component {
                   res.pdfNotMergedList.join(", ");
               }
 
-              console.log("[LOG] " + tempMsg);
+              // console.log("[LOG] " + tempMsg);
               this.setState(
                 {
                   modalOpen: true,
@@ -138,7 +138,7 @@ class MergePDFS extends Component {
               );
             } else {
               tempMsg = "Merge totally successfull and downloaded!";
-              console.log("[LOG] " + tempMsg);
+              // console.log("[LOG] " + tempMsg);
               this.setState(
                 {
                   modalOpen: true,
@@ -149,7 +149,7 @@ class MergePDFS extends Component {
                   },
                 },
                 () => {
-                  console.log("[LOG] Closed modal");
+                  // console.log("[LOG] Closed modal");
                 }
               );
             }
@@ -157,7 +157,7 @@ class MergePDFS extends Component {
         } else {
           tempMsg =
             "Internal error at merging! Send this error to the developer in charge.";
-          console.log(tempMsg);
+          // console.log(tempMsg);
           this.setState(
             {
               modalOpen: true,
@@ -168,13 +168,13 @@ class MergePDFS extends Component {
               },
             },
             () => {
-              console.log("[LOG] Closed modal");
+              // console.log("[LOG] Closed modal");
             }
           );
         }
       })
       .catch((err) => {
-        console.log("[LOG] " + err);
+        // console.log("[LOG] " + err);
       })
       .finally(() => this.filesRemoveAll());
   };

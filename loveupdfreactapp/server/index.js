@@ -161,11 +161,11 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
       } else {
         fs.writeFile(outputPptToPdfFilePath, data, "binary", function (err) {
           if (err) {
-            console.log("is2" + err);
+            // console.log("is2" + err);
             fs.unlinkSync(outputPptToPdfFilePath);
             res.status(400).send({ message: "This is an error from server!" });
           } else {
-            console.log("The file was saved!");
+            // console.log("The file was saved!");
             pdf2base64(outputPptToPdfFilePath)
               .then((response) => {
                 let base64Response = {
@@ -177,7 +177,7 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
                 res
                   .status(400)
                   .send({ message: "This is an error from server!" });
-                console.log("v1/pptToPDF", error); //Exepection error....
+                // console.log("v1/pptToPDF", error); //Exepection error....
               })
               .finally(() => {
                 fs.unlinkSync(req.file.path);
@@ -222,14 +222,14 @@ const contactEmail = nodemailer.createTransport({
 
 contactEmail.verify((error) => {
   if (error) {
-    console.log("erroe456", error);
+    // console.log("erroe456", error);
   } else {
-    console.log("Ready to Send");
+    // console.log("Ready to Send");
   }
 });
 
 app.post("/v1/contact", (req, res) => {
-  console.log("threr");
+  // console.log("threr");
   const name = req.body.name;
   const email = req.body.email;
   const message = req.body.message;
@@ -242,7 +242,7 @@ app.post("/v1/contact", (req, res) => {
            <p>Message: ${message}</p>`,
   };
   contactEmail.sendMail(mail, (error) => {
-    console.log("error123", error);
+    // console.log("error123", error);
     if (error) {
       res.json({ status: "ERROR" });
     } else {

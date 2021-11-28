@@ -12,7 +12,7 @@ class Header extends Component {
   };
 
   toggleMenu = () => {
-    console.log("clicked ", this.state.showMenu)
+    // console.log("clicked ", this.state.showMenu)
     this.state.showMenu = !this.state.showMenu
   };
 
