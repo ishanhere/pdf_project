@@ -1,6 +1,6 @@
 {
-  "short_name": "loveupdfreactapp",
-  "name": "Different PDF Operations at one place.",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "logo.png",
