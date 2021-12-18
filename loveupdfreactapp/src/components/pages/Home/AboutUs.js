@@ -95,9 +95,7 @@ const AboutUs = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    A Simple Web Tool to play With PDF as PDFs are pill to work
-                    life.We are here to enhance your experince for day-to-day
-                    PDF operations.
+                    A Simple Web Tool to play With PDF as PDFs are pill to work life. We are here to enhance your experience in day-to-day PDF, Images operations.
                   </Typography>
                 </CardContent>
               </CardActionArea>
