@@ -20,6 +20,11 @@ $ npm i
 $ npm run start
 $ npm run build
 ```
+## Start project serving via Nodes
+
+```
+$ npm run dev
+```
 
 ## ToDo
 
