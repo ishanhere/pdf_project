@@ -40,9 +40,120 @@ process.on("SIGINT", function () {
 
 app.use(express.static(path.join(__dirname, "../build")));
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../build", "index.html"));
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../build", "index.html"));
+// });
+
+app.get("/", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log('homeishan',data)
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF")
+      .replace(/__DESCRIPTION__/g, "A Simple Web Tool to play With PDF as PDFs are pill to work life. We are here to enhance your experience in day-to-day PDF, Images operations.");
+
+    res.send(data)
+  });
 });
+
+
+app.get("/mergepdfs", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/mergepdfs")
+      .replace(/__DESCRIPTION__/g, "Drop Multiple PDFs and Combine/Merge them into Single PDF in No Time.");
+    res.send(data)
+  });
+});
+
+app.get("/imgstopdf", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/imgstopdf")
+      .replace(/__DESCRIPTION__/g, "Drop IMAGES and convert them to PDF in No Time.");
+    res.send(data)
+  });
+});
+
+app.get("/doctopdf", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/doctopdf")
+      .replace(/__DESCRIPTION__/g, "Drop Word(.doc,.docx) file and turn it into PDF File.");
+    res.send(data)
+  });
+});
+
+app.get("/ppttopdf", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/ppttopdf")
+      .replace(/__DESCRIPTION__/g, "Drop PPT(.ppt,.pptx) file and turn it into PDF File.");
+    res.send(data)
+  });
+})
+
+
+app.get("/imgcompress", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/imgcompress")
+      .replace(/__DESCRIPTION__/g, "Drop Image(s) to compress");
+    res.send(data)
+  });
+})
+
+
+app.get("/aboutus", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/aboutus")
+      .replace(/__DESCRIPTION__/g, "A Simple Web Tool to play With PDF as PDFs are pill to work life. We are here to enhance your experience in day-to-day PDF, Images operations.");
+    res.send(data)
+  });
+})
+
+
+
+app.get("/contactus", (req, res) => {
+  const filePath = path.resolve(__dirname, "../build", "index.html");
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    data = data
+      .replace(/__TITLE__/g, "Love U PDF/contactus")
+      .replace(/__DESCRIPTION__/g, "A Simple Web Tool to play With PDF as PDFs are pill to work life. We are here to enhance your experience in day-to-day PDF, Images operations.");
+    res.send(data)
+  });
+})
 
 const checkFileType = function (req, file, callback) {
   const filetypes = /doc|docx/;
