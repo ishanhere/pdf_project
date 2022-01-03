@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "loveupdf",
+  "private_key_id": "f99b3a53a55478640fa2a0f4586ca6e18e9f4e05",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDm7KcwQl8ceSPP\nMF2huX/iECGB1rnBQRh7qPnZb3xMSEn2sEOUENofgb2ie1PyEHwySjJ+2VioSH5H\n7UlqPdviQJ3ruLc4m87rg8iRuO3L9K0uNQ15YZ6pB9MUj9/rRp8v3EH04pCqWr06\nrNaLv4vEJvjVaEUQsXtusQWiFY6c88jJLQHcJWTgzMNg8VLnTEFPcdkw0gkidzp9\ndQngG4eXxiLN9JJ54MUU+nN35e/r9vSM6XHLzJQazqDftHh+r8Qp4uQhOjULdClN\nTf6qPUn4L+rFyTFHGgsPmi8EV8/BCUSlC7XdJ/qLDqO3gUWKx9FhdV0xXW+rmvKV\nH6CTAnnbAgMBAAECggEADqapHNi5LBdLfFO3PRGF2ZPobFJxSp+UrBPWdkMqgbR8\nbNhWEUjYbfNPUsW8V7lQB+jJN18WzuZ6jJmzdLgkAUDURCZeCYtpH2wnB4fSHoSR\nkELxbegRpuvGKqHONSEv7FtvG9hcEVLceqKIoiku9uz6EKAi8aIxEJ7Omq//clmu\nYwAdWVO3tKsi4BIPoWK321TTraa7+nIk4wj5oGj3faUcewDOBZwajIrvnDq12Cfu\n19MgPpF5IWgWehkZGv8JqGepdWK1J3OYPekdF24xbL3YvcBhjJja2ELzqgpCU8Au\nR63b/AKSCT3HQm6YxOosmzKAPZWpNG8/kJMzPLv40QKBgQD1QLv+k8/VQWy6aHtP\nZ5VLP8J2iJm0rTkPhcLjFM4I42FvAyC7c+0mfPe/iE/V3xEV2ZVHCbQENaBTzXUe\nIZ0gO3QMaaFmq/b8kqXtWKPVXkf7aHKXvR7JHoaYq1kvfA2npRtHzyqbPLa6jiZZ\n9NG54joVzly8YFYNeo3M+KFZlQKBgQDxCy5f6lDRegNXdQRgn7VoNJV28fQDHY/4\np8n/zEBTUrWYU23xeNR0z5Of6oScpPwYluLgpilTwCo+pyUsjRZLTsRuP4dpJTMQ\nzsRzTTXoqThAabS4BDsTkuPQpzDXzaH34gIupchMO0TLOfzFMohIqsDqiW1hhpfD\n/bVsqlAJrwKBgGrfpcy/fu8QjqAAzdOBcRaUl1puFoUcg2QXRyELvOk0pQ3qUAY/\n81U1WgUWEqxBg8GAysNlIBRBhjderi3OOhmErwKFuXbzczMHeNUgLmzZpAaTsnQb\nTuIXslGvQbMmnRC0K1o0lf2GDJ7pOR80R3x4cBV2kwTn+jfvcwGiSzWtAoGBAM4e\nGozISE2oQT1DAfhB+ZTfCkRJB7i2Sct+ZzxGg2b83e4gwW3wPfSZIApqNvXgGvZH\n6D/jtok4VKd4tFARYVQKSexghMFDnxQrS0+xYXzPXxutiGymqYHGZOqiXSDcZTkb\n2XPcLZgKQnxp3J0f5ewFn6uu0orH1fUxeTcvt/tfAoGBAIGa/JffN4AuMR2wWy7T\nCS6Alz4Ma2qeKCFEIbjYf6j9hLEJN4sVQBnDD/ZbNKG+TkAN4vNy2bRkoPmyOD9C\nPc+8sSxUViV5RzCTljqsoB5vTM0bq5izD0u6gIJAjXUp6BU9gai/n9MBLgAGkvK7\nLo3VuLB//KV0MVnfdHFabd7D\n-----END PRIVATE KEY-----\n",
+  "client_email": "loveupdf@loveupdf.iam.gserviceaccount.com",
+  "client_id": "108633249739343509581",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/loveupdf%40loveupdf.iam.gserviceaccount.com"
+}
