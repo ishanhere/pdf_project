@@ -16,8 +16,6 @@ import HeaderV2 from "../../organism/HeaderV2";
 import { spacing } from "@material-ui/system";
 import ContactForm from "./ContactForm";
 import AboutUs from "./AboutUs";
-import Ads from "./Ads";
-
 const Home = (props) => {
   const { classes } = props;
 
@@ -50,9 +48,14 @@ const Home = (props) => {
           <Route path="/aboutus">
             <AboutUs />
           </Route>
-          <Route path="/ads.txt">
-            <Ads />
-          </Route>
+          {/* <Route path="/ads.txt">
+            <div>
+              <div>google.com, pub-8065152953492967, DIRECT, f08c47fec0942fa0</div>
+              <div>test1</div>
+              <div>test2</div>
+              <div>test3</div>
+            </div>
+          </Route> */}
         </div>
       </main>
     </>
