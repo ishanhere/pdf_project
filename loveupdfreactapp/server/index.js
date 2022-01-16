@@ -112,7 +112,7 @@ const pdfUploadToCompress = multer({ storage: storage });
 // app.post('/v1/compresspdf',pdfUploadToCompress.single('pdfFile'),(req,res) => {
 //     var inputFile = req.file;
 //     outputFilePath = Date.now() + "_output.pdf";
-//     console.log(outputFilePath);
+//     cconsole.log()
 
 //     exec(gs `\ -q -dNOPAUSE -dBATCH -dSAFER \ -sDEVICE=pdfwrite \ -dCompatibilityLevel=1.3 \ -dPDFSETTINGS=/ebook \ -dEmbedAllFonts=true \ -dSubsetFonts=true \ -dAutoRotatePages=/None \ -dColorImageDownsampleType=/Bicubic \ -dColorImageResolution=72 \ -dGrayImageDownsampleType=/Bicubic \ -dGrayImageResolution=72 \ -dMonoImageDownsampleType=/Subsample \ -dMonoImageResolution=72 \ -sOutputFile=${outputFilePath} \ ${inputFile}`,
 //       (err, stdout, stderr) => {
@@ -139,7 +139,7 @@ const pdfUploadToCompress = multer({ storage: storage });
 //         )
 //         .catch(
 //             (error) => {
-//                 console.log('ishan_error_response',error); //Exepection error....
+//                 cconsole.log()
 //             }
 //         )
 //       }
@@ -161,11 +161,11 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
       } else {
         fs.writeFile(outputPptToPdfFilePath, data, "binary", function (err) {
           if (err) {
-            // console.log("is2" + err);
+            // cconsole.log()
             fs.unlinkSync(outputPptToPdfFilePath);
             res.status(400).send({ message: "This is an error from server!" });
           } else {
-            // console.log("The file was saved!");
+            // cconsole.log()
             pdf2base64(outputPptToPdfFilePath)
               .then((response) => {
                 let base64Response = {
@@ -177,7 +177,7 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
                 res
                   .status(400)
                   .send({ message: "This is an error from server!" });
-                // console.log("v1/pptToPDF", error); //Exepection error....
+                // cconsole.log()
               })
               .finally(() => {
                 fs.unlinkSync(req.file.path);
@@ -192,13 +192,13 @@ app.post("/v1/pptToPDF", pptUpload.single("pptFile"), (req, res) => {
 
             //     fs.writeFile(outputPptToPdfFilePath, data,  "binary",function(err) {
             //         if(err) {
-            //             console.log(err);
+            //             cconsole.log()
             //         } else {
-            //             console.log("The second file was saved!");
+            //             cconsole.log()
             //         }
             //     });
 
-            //     console.log('Successful - done.');
+            //     cconsole.log()
             //     }
             // };
 
@@ -222,14 +222,14 @@ const contactEmail = nodemailer.createTransport({
 
 contactEmail.verify((error) => {
   if (error) {
-    // console.log("erroe456", error);
+    // cconsole.log()
   } else {
-    // console.log("Ready to Send");
+    // cconsole.log()
   }
 });
 
 app.post("/v1/contact", (req, res) => {
-  // console.log("threr");
+  // cconsole.log()
   const name = req.body.name;
   const email = req.body.email;
   const message = req.body.message;
@@ -242,7 +242,7 @@ app.post("/v1/contact", (req, res) => {
            <p>Message: ${message}</p>`,
   };
   contactEmail.sendMail(mail, (error) => {
-    // console.log("error123", error);
+    // cconsole.log()
     if (error) {
       res.json({ status: "ERROR" });
     } else {
@@ -252,4 +252,4 @@ app.post("/v1/contact", (req, res) => {
 });
 
 const PORT = 8080;
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
+app.listen(PORT, cconsole.log()

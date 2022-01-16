@@ -31,17 +31,17 @@ class PptToPDF extends Component {
         hasFiles: files.length > 0 ? true : false,
       },
       () => {
-        // console.log(this.state)
+        // cconsole.log()
       }
     );
 
     // this.setState({value: event.target.value}, function () {
-    //     console.log(this.state.value);
+    //     cconsole.log()
     // });
   };
 
   onFilesError = (error, file) => {
-    console.log("[LOG] Error code " + error.code + ": " + error.message);
+    cconsole.log()
   };
 
   filesRemoveOne = (file) => {
@@ -130,7 +130,7 @@ class PptToPDF extends Component {
             },
           },
           () => {
-            console.log("[LOG] Closed modal");
+            cconsole.log()
           }
         );
       });

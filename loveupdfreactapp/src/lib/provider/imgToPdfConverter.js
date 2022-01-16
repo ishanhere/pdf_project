@@ -10,7 +10,7 @@ const A4_PAPER_DIMENSIONS = {
 const A4_PAPER_RATIO = A4_PAPER_DIMENSIONS.width / A4_PAPER_DIMENSIONS.height;
 
 function imageDimensionsOnA4(dimensions) {
-    // console.log('dimensions',dimensions);
+    // cconsole.log()
     if(!dimensions.height || !dimensions.width){
         return {
             width: 210,
@@ -42,7 +42,7 @@ function imageDimensionsOnA4(dimensions) {
 };
 
 function fileToImageURL(file) {
-    // console.log(file)
+    // cconsole.log()
     return new Promise((resolve, reject) => {
     // const image = new CustomImage(file.type);
 
@@ -70,8 +70,8 @@ function generatePdfFromImages(images){
                 width: image.width,
                 height: image.height,
             });
-            // console.log('image',image);
-            // console.log('imageDimensions',imageDimensions)
+            // cconsole.log()
+            // cconsole.log()
 
             doc.addPage();
 

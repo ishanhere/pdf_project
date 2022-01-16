@@ -30,17 +30,17 @@ class DoctoPDF extends Component {
         hasFiles: files.length > 0 ? true : false,
       },
       () => {
-        // console.log(this.state)
+        // cconsole.log()
       }
     );
 
     // this.setState({value: event.target.value}, function () {
-    //     console.log(this.state.value);
+    //     cconsole.log()
     // });
   };
 
   onFilesError = (error, file) => {
-    console.log("[LOG] Error code " + error.code + ": " + error.message);
+    // cconsole.log()
   };
 
   filesRemoveOne = (file) => {
@@ -107,7 +107,7 @@ class DoctoPDF extends Component {
             .replace("Z", "") +
           ".pdf";
         downloadLink.click();
-        console.log("this", this);
+        cconsole.log()
         this1.setState({
           modalOpen: true,
           modalLoading: false,
@@ -119,8 +119,8 @@ class DoctoPDF extends Component {
         });
       })
       .catch(function (response) {
-        console.log("doc err", response);
-        console.log("this1", this1);
+        cconsole.log()
+        cconsole.log()
 
         this1.setState(
           {
@@ -132,7 +132,7 @@ class DoctoPDF extends Component {
             },
           },
           () => {
-            console.log("[LOG] Closed modal");
+            cconsole.log()
           }
         );
       });
