@@ -68,7 +68,7 @@ Home.propTypes = {
 
 const styles = (theme) => ({
   icon: {
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
   },
   heroUnit: {
     backgroundColor: "#ffffff",
@@ -77,10 +77,10 @@ const styles = (theme) => ({
     // maxWidth: 600,
     margin: "0 auto",
     // textAlign:'center',
-    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+    padding: `${theme.spacing(8)}px 0 ${theme.spacing(6)}px`,
   },
   heroButtons: {
-    marginTop: theme.spacing.unit * 4,
+    marginTop: theme.spacing(4),
   },
   landingPage: {
     width: "100%",
@@ -91,16 +91,16 @@ const styles = (theme) => ({
   },
   layout: {
     width: "auto",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    [theme.breakpoints.up(1100 + theme.spacing( 3 * 2 ))]: {
       width: 1100,
       marginLeft: "auto",
       marginRight: "auto",
     },
   },
   cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`,
+    padding: `${theme.spacing(8)}px 0`,
   },
   card: {
     height: "100%",
@@ -115,12 +115,12 @@ const styles = (theme) => ({
   },
   footer: {
     backgroundColor: "#ffffff",
-    padding: theme.spacing.unit * 6,
+    padding: theme.spacing(6),
   },
   links: {
     color: "white",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
   },
 });
 

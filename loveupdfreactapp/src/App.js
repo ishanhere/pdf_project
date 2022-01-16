@@ -1,6 +1,5 @@
 import React from "react";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./config/theme";
 import Home from "./components/pages/Home";
 
