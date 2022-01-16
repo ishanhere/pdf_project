@@ -57,7 +57,7 @@ class ModalLoadingAlert extends React.Component {
       nextProps.hasOwnProperty("isLoading") &&
       nextProps.hasOwnProperty("msg")
     ) {
-      // cconsole.log()
+      // console.log(nextProps)
       if (nextProps.isOpen) this.handleOpen();
       // else this.handleClose()
 

@@ -28,17 +28,17 @@ class ImagetoPDF extends Component {
         hasFiles: files.length > 0 ? true : false,
       },
       () => {
-        // cconsole.log()
+        // console.log(this.state)
       }
     );
 
     // this.setState({value: event.target.value}, function () {
-    //     cconsole.log()
+    //     console.log(this.state.value);
     // });
   };
 
   onFilesError = (error, file) => {
-    cconsole.log()
+    console.log("[LOG] Error code " + error.code + ": " + error.message);
   };
 
   filesRemoveOne = (file) => {
@@ -105,7 +105,7 @@ class ImagetoPDF extends Component {
           },
         },
         () => {
-          cconsole.log()
+          console.log("[LOG] Closed modal");
         }
       );
     }

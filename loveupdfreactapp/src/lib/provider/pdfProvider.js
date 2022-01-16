@@ -8,7 +8,7 @@ function mergeBetweenPDF(pdfFileList) {
 
     if (pdfFileList.length > 0) {
 		const reader = new FileReader();
-		reader.onload = function(evt) { cconsole.log()
+		reader.onload = function(evt) { console.log(evt.target.result); };
 
 		const pdfDoc = PDFDocumentFactory.create();
 		let iterPdfDoc = PDFDocumentFactory.create();
@@ -20,7 +20,7 @@ function mergeBetweenPDF(pdfFileList) {
 		// Get all file URLs into a list using Promises and fetch API
 		
 		// pdfFileList.forEach((pdfFile) => {
-		// 	cconsole.log()
+		// 	console.log(pdfFile)
 		// 	pdfFilePromiseArrayBufferList.push(
 		// 		fetch(URL.createObjectURL(pdfFile))
 		// 			.then(res => res.arrayBuffer())
@@ -29,8 +29,8 @@ function mergeBetweenPDF(pdfFileList) {
 
 		// Get all file URLs into a list using Promises and fetch API  -- IM
 		for(let i=0;i<pdfFileList.length;i++){
-			cconsole.log()
-			cconsole.log()
+			console.log(pdfFileList[i])
+			console.log('1234',URL.createObjectURL(pdfFileList[i]))
 			pdfFilePromiseArrayBufferList.push(
 				fetch(URL.createObjectURL(pdfFileList[i]))
 					.then(res => res.arrayBuffer())
@@ -40,9 +40,9 @@ function mergeBetweenPDF(pdfFileList) {
 		return Promise
 			.all(pdfFilePromiseArrayBufferList)
 			.then((pdfArrayBufferFileList) => {
-				cconsole.log()
+				console.log('pdfArrayBufferFileList',pdfArrayBufferFileList);
 				for (let i = 0; i < pdfArrayBufferFileList.length; i++) {
-					// cconsole.log()
+					// console.log(pdfArrayBufferFileList[i])
 					// iterPdfDocBytes = reader.readAsArrayBuffer(pdfBlob)
 					try {
 						iterPdfDoc = PDFDocumentFactory.load(new Uint8Array(pdfArrayBufferFileList[i]))
@@ -57,8 +57,8 @@ function mergeBetweenPDF(pdfFileList) {
 							pdfDoc.addPage(pdfPage)
 						})
 					} catch (err) {
-						cconsole.log()
-						// cconsole.log()
+						console.log(err)
+						// console.log("File " + pdfFileList[i].name + " not merged due to the following error: " + err.message)
 						pdfNotMergedList.push(pdfFileList[i].name)
 					}
 				}
@@ -68,7 +68,7 @@ function mergeBetweenPDF(pdfFileList) {
 				return returnObj
 			})
 			.catch((err) => {
-				cconsole.log()
+				console.log(err)
 				returnObj.pdfFile = null
 				returnObj.pdfNotMergedList = pdfNotMergedList
 				return returnObj

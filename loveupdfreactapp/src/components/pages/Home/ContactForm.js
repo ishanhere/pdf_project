@@ -24,7 +24,7 @@ class ContactForm extends Component {
   // const [status, setStatus] = useState("Send");
 
   handleSubmit = (e) => {
-    // cconsole.log()
+    // console.log(e);
     e.preventDefault();
     this.setState({ status: "Sending..." });
     const { name, email, message } = e.target.elements;
@@ -51,7 +51,7 @@ class ContactForm extends Component {
         });
       })
       .catch(function (response) {
-        // cconsole.log()
+        // console.log("doc err", response);
         this.setState(
           {
             modalOpen: true,
@@ -62,7 +62,7 @@ class ContactForm extends Component {
             },
           },
           () => {
-            cconsole.log()
+            console.log("[LOG] Closed modal");
           }
         );
       });
@@ -75,7 +75,7 @@ class ContactForm extends Component {
     // });
     // setStatus("Submit");
     // let result = await response.json();
-    // cconsole.log()
+    // console.log(result);
     // alert(result.status);
   };
   render() {

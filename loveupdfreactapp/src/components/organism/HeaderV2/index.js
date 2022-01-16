@@ -94,12 +94,12 @@ export default function App() {
   };
 
   const handleClick = () => {
-      // cconsole.log()
+      // console.log("called")
     setPdfOpen(!openPdfDrawer);
   };
 
   const handleImageClick = () => {
-    // cconsole.log()
+    // console.log("called")
   setImageOpen(!openImageDrawer);
 };
 

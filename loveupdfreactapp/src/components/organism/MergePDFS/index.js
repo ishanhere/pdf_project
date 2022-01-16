@@ -31,17 +31,17 @@ class MergePDFS extends Component {
         hasFiles: files.length > 0 ? true : false,
       },
       () => {
-        // cconsole.log()
+        // console.log(this.state)
       }
     );
 
     // this.setState({value: event.target.value}, function () {
-    //     cconsole.log()
+    //     console.log(this.state.value);
     // });
   };
 
   onFilesError = (error, file) => {
-    cconsole.log()
+    console.log("[LOG] Error code " + error.code + ": " + error.message);
   };
 
   filesRemoveOne = (file) => {
@@ -87,13 +87,13 @@ class MergePDFS extends Component {
       },
       () => {
         // this.refs.modal.handleOpen()
-        cconsole.log()
+        console.log("[LOG] Starting merge...");
       }
     );
 
     PDFProvider.mergeBetweenPDF(this.state.files)
       .then((res) => {
-        // cconsole.log()
+        // console.log(res)
         if (res && res.hasOwnProperty("pdfFile")) {
           if (res.pdfFile) {
             if (res.pdfNotMergedList.length !== this.state.files.length) {
@@ -122,7 +122,7 @@ class MergePDFS extends Component {
                   res.pdfNotMergedList.join(", ");
               }
 
-              // cconsole.log()
+              // console.log("[LOG] " + tempMsg);
               this.setState(
                 {
                   modalOpen: true,
@@ -133,12 +133,12 @@ class MergePDFS extends Component {
                   },
                 },
                 () => {
-                  cconsole.log()
+                  console.log("[LOG] Modal closed.");
                 }
               );
             } else {
               tempMsg = "Merge totally successfull and downloaded!";
-              // cconsole.log()
+              // console.log("[LOG] " + tempMsg);
               this.setState(
                 {
                   modalOpen: true,
@@ -149,7 +149,7 @@ class MergePDFS extends Component {
                   },
                 },
                 () => {
-                  // cconsole.log()
+                  // console.log("[LOG] Closed modal");
                 }
               );
             }
@@ -157,7 +157,7 @@ class MergePDFS extends Component {
         } else {
           tempMsg =
             "Internal error at merging! Send this error to the developer in charge.";
-          // cconsole.log()
+          // console.log(tempMsg);
           this.setState(
             {
               modalOpen: true,
@@ -168,13 +168,13 @@ class MergePDFS extends Component {
               },
             },
             () => {
-              // cconsole.log()
+              // console.log("[LOG] Closed modal");
             }
           );
         }
       })
       .catch((err) => {
-        // cconsole.log()
+        // console.log("[LOG] " + err);
       })
       .finally(() => this.filesRemoveAll());
   };
