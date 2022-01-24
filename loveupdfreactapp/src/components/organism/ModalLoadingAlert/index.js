@@ -18,11 +18,11 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`
+    transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   paper: {
     position: "absolute",
     width: theme.spacing(50),
@@ -30,8 +30,8 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4),
     outline: "none",
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 class ModalLoadingAlert extends React.Component {
@@ -42,7 +42,7 @@ class ModalLoadingAlert extends React.Component {
       loading: props.isLoading,
       modalQuery: "idle",
       msg: props.msg,
-      respMsg: null
+      respMsg: null,
     };
     this.filesClearAndRemoveAll = props.clearModalStatus;
   }
@@ -85,8 +85,9 @@ class ModalLoadingAlert extends React.Component {
       loading: false,
       modalQuery: "idle",
       msg: { err: null, success: null },
-      respMsg: null
+      respMsg: null,
     });
+    location.reload();
     this.filesClearAndRemoveAll();
   };
 
@@ -138,7 +139,7 @@ class ModalLoadingAlert extends React.Component {
                   in={this.state.modalQuery === "progress"}
                   style={{
                     transitionDelay:
-                      this.state.modalQuery === "progress" ? "800ms" : "0ms"
+                      this.state.modalQuery === "progress" ? "800ms" : "0ms",
                   }}
                   unmountOnExit
                 >

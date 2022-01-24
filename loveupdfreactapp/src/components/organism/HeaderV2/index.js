@@ -12,54 +12,54 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Collapse from '@material-ui/core/Collapse';
+import Collapse from "@material-ui/core/Collapse";
 // import { ListItemButton } from '@material-ui/core';
 // import InboxIcon from "@material-ui/icons/MoveToInbox";
 // import MailIcon from "@material-ui/icons/Mail";
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const drawerWidth = 200;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
   },
   drawer: {
     flexShrink: 0,
-    width: drawerWidth
+    width: drawerWidth,
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
   },
   menuButton: {
-    position: 'fixed',
-    left: '16px',
-    top: '0px',
+    position: "fixed",
+    left: "16px",
+    top: "0px",
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
+      display: "none",
+    },
   },
   toolbar: {
     ...theme.mixins.toolbar,
     [theme.breakpoints.down("sm")]: {
-      display: "none"
-    }
+      display: "none",
+    },
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
   },
   headerIcon: {
-    width: '100%',
-    textAlign: 'center'
-  }
+    width: "100%",
+    textAlign: "center",
+  },
 }));
 
 export default function App() {
@@ -71,7 +71,7 @@ export default function App() {
   const [openPdfDrawer, setPdfOpen] = React.useState(true);
   const [openImageDrawer, setImageOpen] = React.useState(true);
 
-  const toggleDrawer = event => {
+  const toggleDrawer = (event) => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
@@ -84,24 +84,25 @@ export default function App() {
 
   const changeRoute = (event, href) => {
     if (event.metaKey || event.ctrlKey) return;
-    if(!isMdUp) {
-        setOpen(!open);
+    if (!isMdUp) {
+      setOpen(!open);
     }
     event.preventDefault();
     window.history.pushState({}, "", href);
     const navEvent = new PopStateEvent("popstate");
     window.dispatchEvent(navEvent);
+    location.reload();
   };
 
   const handleClick = () => {
-      // console.log("called")
+    // console.log("called")
     setPdfOpen(!openPdfDrawer);
   };
 
   const handleImageClick = () => {
     // console.log("called")
-  setImageOpen(!openImageDrawer);
-};
+    setImageOpen(!openImageDrawer);
+  };
 
   return (
     <div className={classes.root}>
@@ -117,96 +118,101 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-        <Typography variant="h6" noWrap onClick={(e) => changeRoute(e, '/')} className={classes.headerIcon}>
-          Love U PDF
-        </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            onClick={(e) => changeRoute(e, "/")}
+            className={classes.headerIcon}
+          >
+            Love U PDF
+          </Typography>
         </Toolbar>
       </AppBar>
-        <Drawer
-            className={classes.drawer}
-            variant={isMdUp ? "permanent" : "temporary"}
-            classes={{
-            paper: classes.drawerPaper
-            }}
-            anchor="left"
-            open={open}
-            onClose={toggleDrawer}
-        >
-            <div className={classes.toolbar} />
-            <Divider />
-            <List>
-                <ListItem button onClick={handleClick}>
-                    {/* <ListItemIcon>
+      <Drawer
+        className={classes.drawer}
+        variant={isMdUp ? "permanent" : "temporary"}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        anchor="left"
+        open={open}
+        onClose={toggleDrawer}
+      >
+        <div className={classes.toolbar} />
+        <Divider />
+        <List>
+          <ListItem button onClick={handleClick}>
+            {/* <ListItemIcon>
                     <InboxIcon />
                     </ListItemIcon> */}
-                    <ListItemText primary="PDF Operations" />
-                    {openPdfDrawer ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={openPdfDrawer} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                    <ListItem button onClick={(e) => changeRoute(e, '/mergepdfs')}>
-                        {/* <ListItemIcon>
+            <ListItemText primary="PDF Operations" />
+            {openPdfDrawer ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openPdfDrawer} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button onClick={(e) => changeRoute(e, "/mergepdfs")}>
+                {/* <ListItemIcon>
                         <InboxIcon />
                         </ListItemIcon> */}
-                        <ListItemText primary="Merge PDFs" />
-                    </ListItem>
-                    <ListItem button onClick={(e) => changeRoute(e, '/imgstopdf')}>
-                        {/* <ListItemIcon>
+                <ListItemText primary="Merge PDFs" />
+              </ListItem>
+              <ListItem button onClick={(e) => changeRoute(e, "/imgstopdf")}>
+                {/* <ListItemIcon>
                         <InboxIcon />
                         </ListItemIcon> */}
-                        <ListItemText primary="Images to PDF" />
-                    </ListItem>
-                    <ListItem button onClick={(e) => changeRoute(e, '/doctopdf')}>
-                        {/* <ListItemIcon>
+                <ListItemText primary="Images to PDF" />
+              </ListItem>
+              <ListItem button onClick={(e) => changeRoute(e, "/doctopdf")}>
+                {/* <ListItemIcon>
                         <InboxIcon />
                         </ListItemIcon> */}
-                        <ListItemText primary="Convert Doc To PDF" />
-                    </ListItem>
-                    <ListItem button onClick={(e) => changeRoute(e, '/ppttopdf')}>
-                        {/* <ListItemIcon>
+                <ListItemText primary="Convert Doc To PDF" />
+              </ListItem>
+              <ListItem button onClick={(e) => changeRoute(e, "/ppttopdf")}>
+                {/* <ListItemIcon>
                         <InboxIcon />
                         </ListItemIcon> */}
-                        <ListItemText primary="Convert PPT To PDF" />
-                    </ListItem>
-                    </List>
-                </Collapse>
+                <ListItemText primary="Convert PPT To PDF" />
+              </ListItem>
             </List>
-            <Divider />
-            <List>
-                <ListItem button onClick={handleImageClick}>
-                    {/* <ListItemIcon>
+          </Collapse>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button onClick={handleImageClick}>
+            {/* <ListItemIcon>
                         <InboxIcon />
                     </ListItemIcon> */}
-                    <ListItemText primary="Image Operations" />
-                    {openImageDrawer ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={openImageDrawer} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                      <ListItem button onClick={(e) => changeRoute(e, '/imgcompress')}>
-                        {/* <ListItemIcon>
+            <ListItemText primary="Image Operations" />
+            {openImageDrawer ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openImageDrawer} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button onClick={(e) => changeRoute(e, "/imgcompress")}>
+                {/* <ListItemIcon>
                             <InboxIcon />
                         </ListItemIcon> */}
-                        <ListItemText primary="Compress Image" />
-                      </ListItem>
-                    </List>
-                </Collapse>
-            </List>
-            <Divider />
-            <List>
-              <ListItem button onClick={(e) => changeRoute(e, '/contactus')}>
-                  {/* <ListItemIcon>
-                  <InboxIcon />
-                  </ListItemIcon> */}
-                  <ListItemText primary="Contact US" />
-              </ListItem>
-              <ListItem button onClick={(e) => changeRoute(e, '/aboutus')}>
-                  {/* <ListItemIcon>
-                  <InboxIcon />
-                  </ListItemIcon> */}
-                  <ListItemText primary="About US" />
+                <ListItemText primary="Compress Image" />
               </ListItem>
             </List>
-        </Drawer>
+          </Collapse>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button onClick={(e) => changeRoute(e, "/contactus")}>
+            {/* <ListItemIcon>
+                  <InboxIcon />
+                  </ListItemIcon> */}
+            <ListItemText primary="Contact US" />
+          </ListItem>
+          <ListItem button onClick={(e) => changeRoute(e, "/aboutus")}>
+            {/* <ListItemIcon>
+                  <InboxIcon />
+                  </ListItemIcon> */}
+            <ListItemText primary="About US" />
+          </ListItem>
+        </List>
+      </Drawer>
     </div>
   );
 }

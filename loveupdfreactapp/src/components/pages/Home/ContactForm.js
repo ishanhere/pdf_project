@@ -80,68 +80,75 @@ class ContactForm extends Component {
   };
   render() {
     return (
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1 },
-        }}
-        autoComplete="off"
-      >
-        <Typography variant="h4" style={{ fontWeight: 800, paddingBottom: 30 }}>
-          Contact Us
-        </Typography>
-        <form method="POST" onSubmit={this.handleSubmit}>
-          <div>
-            <FormControl variant="standard">
-              <TextField
-                id="name"
-                required
-                label="Name"
-                variant="outlined"
-                margin="normal"
-                name="name"
-              />
-            </FormControl>
-          </div>
-          <div>
-            <FormControl variant="standard">
-              <TextField
-                id="email"
-                label="Email"
-                required
-                type="email"
-                variant="outlined"
-                margin="normal"
-                name="email"
-              />
-            </FormControl>
-          </div>
-          <div>
-            <FormControl variant="standard">
-              <TextField
-                margin="normal"
-                id="message"
-                label="Message"
-                multiline
-                variant="outlined"
-                required
-                rows={4}
-                defaultValue="Write To Us"
-              />
-            </FormControl>
-          </div>
-          <div>
-            <Button type="submit" variant="contained">
-              {this.state.status}
-            </Button>
-          </div>
-        </form>
-        <ModalLoadingAlert
-          isOpen={this.state.modalOpen}
-          isLoading={this.state.modalLoading}
-          msg={this.state.modalMsg}
-        />
-      </Box>
+      <div>
+        <div style={{ height: "250px", width: "100%" }}></div>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1 },
+          }}
+          autoComplete="off"
+        >
+          <Typography
+            variant="h4"
+            style={{ fontWeight: 800, paddingBottom: 30 }}
+          >
+            Contact Us
+          </Typography>
+          <form method="POST" onSubmit={this.handleSubmit}>
+            <div>
+              <FormControl variant="standard">
+                <TextField
+                  id="name"
+                  required
+                  label="Name"
+                  variant="outlined"
+                  margin="normal"
+                  name="name"
+                />
+              </FormControl>
+            </div>
+            <div>
+              <FormControl variant="standard">
+                <TextField
+                  id="email"
+                  label="Email"
+                  required
+                  type="email"
+                  variant="outlined"
+                  margin="normal"
+                  name="email"
+                />
+              </FormControl>
+            </div>
+            <div>
+              <FormControl variant="standard">
+                <TextField
+                  margin="normal"
+                  id="message"
+                  label="Message"
+                  multiline
+                  variant="outlined"
+                  required
+                  rows={4}
+                  defaultValue="Write To Us"
+                />
+              </FormControl>
+            </div>
+            <div>
+              <Button type="submit" variant="contained">
+                {this.state.status}
+              </Button>
+            </div>
+          </form>
+          <ModalLoadingAlert
+            isOpen={this.state.modalOpen}
+            isLoading={this.state.modalLoading}
+            msg={this.state.modalMsg}
+          />
+        </Box>
+        <div style={{ height: "250px", width: "100%" }}></div>
+      </div>
     );
   }
 }

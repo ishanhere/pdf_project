@@ -184,9 +184,13 @@ class MergePDFS extends Component {
 
     return (
       <div className={classes.containerDiv}>
-        <Typography variant="h4">
+        <div style={{ height: "200px", width: "100%" }}></div>
+
+        <Typography variant="h5">
           Drop Multiple PDFs and Combine them into Single PDF in No Time.
         </Typography>
+        <div style={{ height: "200px", width: "100%" }}></div>
+
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
             <Files
@@ -207,6 +211,8 @@ class MergePDFS extends Component {
             </Files>
           </Grid>
         </Grid>
+
+        <div style={{ height: "200px", width: "100%" }}></div>
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -246,7 +252,14 @@ class MergePDFS extends Component {
           )}
         </Grid>
 
-        <Grid container spacing={16} justify="center" className={classes.gridContainer}>
+        <div style={{ height: "200px", width: "100%" }}></div>
+
+        <Grid
+          container
+          spacing={16}
+          justify="center"
+          className={classes.gridContainer}
+        >
           <Grid item className={classes.btnGrid}>
             <Button
               variant="contained"
@@ -269,6 +282,9 @@ class MergePDFS extends Component {
             </Button>
           </Grid>
         </Grid>
+
+        <div style={{ height: "200px", width: "100%" }}></div>
+
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}
           isLoading={this.state.modalLoading}
@@ -282,15 +298,15 @@ class MergePDFS extends Component {
 
 const styles = (theme) => ({
   containerDiv: {
-    marginTop: '20px',
+    marginTop: "20px",
     width: "30%",
-    marginLeft: 'calc((100% - 30% + 200px) / 2)',
-    marginRight: 'calc((100% - 30% + 200px) / 2)',
-    ['@media (max-width:900px)']: {
+    marginLeft: "calc((100% - 30% + 200px) / 2)",
+    marginRight: "calc((100% - 30% + 200px) / 2)",
+    ["@media (max-width:900px)"]: {
       width: "90%",
       marginLeft: "5%",
       marginRight: "5%",
-    }
+    },
   },
   pdfInfoSpan: {
     marginLeft: "10px",
@@ -298,10 +314,10 @@ const styles = (theme) => ({
   },
   dropFilesGridZone: {
     width: "100%",
-    marginTop: '10px',
-    ['@media (max-width:900px)']: {
-      width: "100%"
-    }
+    marginTop: "10px",
+    ["@media (max-width:900px)"]: {
+      width: "100%",
+    },
   },
   dropFilesZone: {
     padding: "2em",
@@ -323,22 +339,22 @@ const styles = (theme) => ({
     fontWeight: "bold",
   },
   gridContainer: {
-    marginTop: '20px'
+    marginTop: "20px",
   },
   btnGrid: {
-    paddingRight: '10px',
-    ['@media (max-width:900px)']: {
-      paddingRight: '0',
-      width: '100%',
-      marginTop: '10px'
-    }
+    paddingRight: "10px",
+    ["@media (max-width:900px)"]: {
+      paddingRight: "0",
+      width: "100%",
+      marginTop: "10px",
+    },
   },
   btn: {
-      ['@media (max-width:900px)']: {
-        display: 'block',
-        width: '100%'
-      }
-  }
+    ["@media (max-width:900px)"]: {
+      display: "block",
+      width: "100%",
+    },
+  },
 });
 
 export default withStyles(styles, { name: "MuiFilesDragDrop" })(MergePDFS);

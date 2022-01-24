@@ -73,6 +73,7 @@ const AboutUs = () => {
 
   return (
     <div>
+      <div style={{ height: "250px", width: "100%" }}></div>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Typography variant="h4" className={classes.blogTitle}>
           About US
@@ -124,6 +125,7 @@ const AboutUs = () => {
           </Grid>
         </Grid>
       </Container>
+      <div style={{ height: "250px", width: "100%" }}></div>
     </div>
   );
 };
