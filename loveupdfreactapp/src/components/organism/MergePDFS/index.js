@@ -183,24 +183,8 @@ class MergePDFS extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerDiv}>
-        {/* <div style={{ height: "200px", width: "100%" }}> */}
-        {/* <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8065152953492967"
-            crossorigin="anonymous"
-          ></script>
-          <ins
-            class="adsbygoogle"
-            style="display: block"
-            data-ad-client="ca-pub-8065152953492967"
-            data-ad-slot="8288871795"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> */}
-        {/* </div> */}
-        <AdComponent />
-        <Typography variant="h5">
+        {/* <AdComponent /> */}
+        <Typography variant="h3">
           Drop Multiple PDFs and Combine them into Single PDF in No Time.
         </Typography>
         <AdComponent />
@@ -226,7 +210,7 @@ class MergePDFS extends Component {
           </Grid>
         </Grid>
 
-        <AdComponent />
+        {/* <AdComponent /> */}
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -297,7 +281,7 @@ class MergePDFS extends Component {
           </Grid>
         </Grid>
 
-        <AdComponent />
+        {/* <AdComponent /> */}
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}

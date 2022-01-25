@@ -10,6 +10,7 @@ import { saveSync } from "save-file";
 import { docxpdf } from "docx-pdf";
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 import axios from "axios";
+import AdComponent from "../../AdComponent";
 
 class DoctoPDF extends Component {
   state = {
@@ -142,9 +143,9 @@ class DoctoPDF extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerDiv}>
-        <AdComponent />
+        {/* <AdComponent /> */}
 
-        <Typography variant="h5">
+        <Typography variant="h3">
           Drop Word(.doc,.docx) file and turn it into PDF File.
         </Typography>
 
@@ -171,7 +172,7 @@ class DoctoPDF extends Component {
           </Grid>
         </Grid>
 
-        <AdComponent />
+        {/* <AdComponent /> */}
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -242,7 +243,7 @@ class DoctoPDF extends Component {
           </Grid>
         </Grid>
 
-        <AdComponent />
+        {/* <AdComponent /> */}
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}

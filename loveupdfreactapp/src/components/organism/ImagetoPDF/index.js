@@ -8,6 +8,7 @@ import ModalLoadingAlert from "../ModalLoadingAlert";
 import IMGToPdfConverter from "../../../lib/provider/imgToPdfConverter";
 import { saveSync } from "save-file";
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
+import AdComponent from "../../AdComponent";
 
 class ImagetoPDF extends Component {
   state = {

@@ -1,4 +1,5 @@
 import React from "react";
+import AdComponent from "../../AdComponent";
 
 const LandingPage = (props) => {
   return (
