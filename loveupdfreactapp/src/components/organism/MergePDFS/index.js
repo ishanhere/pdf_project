@@ -183,7 +183,7 @@ class MergePDFS extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerDiv}>
-        {/* <AdComponent /> */}
+        <AdComponent />
         <Typography variant="h3">
           Drop Multiple PDFs and Combine them into Single PDF in No Time.
         </Typography>
@@ -312,6 +312,7 @@ const styles = (theme) => ({
   },
   dropFilesGridZone: {
     width: "100%",
+    height: "250px",
     marginTop: "10px",
     ["@media (max-width:900px)"]: {
       width: "100%",
@@ -323,6 +324,7 @@ const styles = (theme) => ({
     color: "rgba(0, 0, 0, .4)",
     width: "100%",
     display: "flex",
+    height: "250px",
     flexWrap: "wrap",
     boxSizing: "border-box",
     textAlign: "center",

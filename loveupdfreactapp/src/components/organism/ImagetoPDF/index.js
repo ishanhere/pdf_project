@@ -119,7 +119,7 @@ class ImagetoPDF extends Component {
       <div className={classes.containerDiv}>
         <AdComponent />
 
-        <Typography variant="h5">
+        <Typography variant="h3">
           Drop IMAGES and turn them to PDF in No Time.
         </Typography>
         <AdComponent />
@@ -247,6 +247,7 @@ const styles = (theme) => ({
   },
   dropFilesGridZone: {
     width: "100%",
+    height: "250px",
     marginTop: "10px",
     ["@media (max-width:900px)"]: {
       width: "100%",
@@ -258,6 +259,7 @@ const styles = (theme) => ({
     color: "rgba(0, 0, 0, .4)",
     width: "100%",
     display: "flex",
+    height: "250px",
     flexWrap: "wrap",
     boxSizing: "border-box",
     textAlign: "center",
