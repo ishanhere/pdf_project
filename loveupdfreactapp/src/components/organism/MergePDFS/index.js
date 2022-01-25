@@ -11,7 +11,7 @@ import { saveSync } from "save-file";
 import { docxpdf } from "docx-pdf";
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 import axios from "axios";
-
+import AdComponent from "../../AdComponent";
 class MergePDFS extends Component {
   state = {
     files: [],
@@ -181,15 +181,29 @@ class MergePDFS extends Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.containerDiv}>
-        <div style={{ height: "200px", width: "100%" }}></div>
-
+        {/* <div style={{ height: "200px", width: "100%" }}> */}
+        {/* <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8065152953492967"
+            crossorigin="anonymous"
+          ></script>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-8065152953492967"
+            data-ad-slot="8288871795"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> */}
+        {/* </div> */}
+        <AdComponent />
         <Typography variant="h5">
           Drop Multiple PDFs and Combine them into Single PDF in No Time.
         </Typography>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
@@ -212,7 +226,7 @@ class MergePDFS extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -252,7 +266,7 @@ class MergePDFS extends Component {
           )}
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid
           container
@@ -283,7 +297,7 @@ class MergePDFS extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}

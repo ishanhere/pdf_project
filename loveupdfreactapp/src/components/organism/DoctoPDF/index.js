@@ -142,13 +142,13 @@ class DoctoPDF extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerDiv}>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Typography variant="h5">
           Drop Word(.doc,.docx) file and turn it into PDF File.
         </Typography>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
@@ -171,7 +171,7 @@ class DoctoPDF extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -211,7 +211,7 @@ class DoctoPDF extends Component {
           )}
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid
           container
@@ -242,7 +242,7 @@ class DoctoPDF extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}

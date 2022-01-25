@@ -14,6 +14,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import Link from "@material-ui/core/Link";
+import AdComponent from "../../AdComponent";
+
 // import Pagination from "@material-ui/lab/Pagination";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,7 +75,7 @@ const AboutUs = () => {
 
   return (
     <div>
-      <div style={{ height: "250px", width: "100%" }}></div>
+      <AdComponent />
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Typography variant="h4" className={classes.blogTitle}>
           About US
@@ -125,7 +127,7 @@ const AboutUs = () => {
           </Grid>
         </Grid>
       </Container>
-      <div style={{ height: "250px", width: "100%" }}></div>
+      <AdComponent />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import ModalLoadingAlert from "../../organism/ModalLoadingAlert";
+import AdComponent from "../../AdComponent";
 
 // import SendIcon from "@material-ui/icons-material/SendIcon";
 
@@ -81,7 +82,7 @@ class ContactForm extends Component {
   render() {
     return (
       <div>
-        <div style={{ height: "250px", width: "100%" }}></div>
+        <AdComponent />
         <Box
           component="form"
           sx={{
@@ -147,7 +148,7 @@ class ContactForm extends Component {
             msg={this.state.modalMsg}
           />
         </Box>
-        <div style={{ height: "250px", width: "100%" }}></div>
+        <AdComponent />
       </div>
     );
   }

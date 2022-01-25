@@ -138,10 +138,10 @@ class ImageCompress extends Component {
 
     return (
       <div className={classes.containerDiv}>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Typography variant="h5s">Drop Image(s) to compress</Typography>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
@@ -163,7 +163,7 @@ class ImageCompress extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
             <Grid item className={classes.dropFilesGridZone}>
@@ -201,7 +201,7 @@ class ImageCompress extends Component {
             </Grid>
           )}
         </Grid>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid
           container
@@ -231,7 +231,7 @@ class ImageCompress extends Component {
             </Button>
           </Grid>
         </Grid>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}

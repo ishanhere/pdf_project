@@ -3,7 +3,7 @@ import React from "react";
 const LandingPage = (props) => {
   return (
     <main>
-      <div style={{ height: "200px", width: "100%" }}></div>
+      <AdComponent />
       <div className={props.landingPage}>
         <img
           src="./Add_files.png"

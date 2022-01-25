@@ -116,12 +116,12 @@ class ImagetoPDF extends Component {
 
     return (
       <div className={classes.containerDiv}>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Typography variant="h5">
           Drop IMAGES and turn them to PDF in No Time.
         </Typography>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
@@ -144,7 +144,7 @@ class ImagetoPDF extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -184,7 +184,7 @@ class ImagetoPDF extends Component {
           )}
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid
           container
@@ -215,7 +215,7 @@ class ImagetoPDF extends Component {
           </Grid>
         </Grid>
 
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}

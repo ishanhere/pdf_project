@@ -140,12 +140,12 @@ class PptToPDF extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.containerDiv}>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Typography variant="h5">
           Drop PPT(.ppt,.pptx) file and turn it into PDF File.
         </Typography>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           <Grid item className={classes.dropFilesGridZone}>
@@ -167,7 +167,7 @@ class PptToPDF extends Component {
             </Files>
           </Grid>
         </Grid>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid container spacing={32} justify="center">
           {this.state.files.length > 0 ? (
@@ -206,7 +206,7 @@ class PptToPDF extends Component {
             </Grid>
           )}
         </Grid>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <Grid
           container
@@ -236,7 +236,7 @@ class PptToPDF extends Component {
             </Button>
           </Grid>
         </Grid>
-        <div style={{ height: "200px", width: "100%" }}></div>
+        <AdComponent />
 
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}
