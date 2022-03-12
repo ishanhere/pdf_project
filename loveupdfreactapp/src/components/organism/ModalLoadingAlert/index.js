@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Fade from "@material-ui/core/Fade";
+import AdComponent from "../../AdComponent";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -47,7 +48,8 @@ class ModalLoadingAlert extends React.Component {
     this.filesClearAndRemoveAll = props.clearModalStatus;
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("nextProps", nextProps);
     // You don't have to do this check first, but it can help prevent an unneeded render
     // if (nextProps.startTime !== this.state.startTime) {
     //   this.setState({ startTime: nextProps.startTime });
@@ -87,7 +89,7 @@ class ModalLoadingAlert extends React.Component {
       msg: { err: null, success: null },
       respMsg: null,
     });
-    location.reload();
+    // location.reload();
     this.filesClearAndRemoveAll();
   };
 
@@ -107,7 +109,8 @@ class ModalLoadingAlert extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <>
+        <AdComponent />
         <Modal
           disableBackdropClick
           disableEscapeKeyDown
@@ -145,7 +148,6 @@ class ModalLoadingAlert extends React.Component {
                 >
                   <CircularProgress />
                 </Fade>
-
                 <Typography>Loding...</Typography>
               </div>
             )}
@@ -153,12 +155,11 @@ class ModalLoadingAlert extends React.Component {
             <ModalLoadingAlertWrapped />
           </div>
         </Modal>
-      </div>
+      </>
     );
   }
 }
 
-// We need an intermediary variable for handling the recursive nesting.
 const ModalLoadingAlertWrapped = withStyles(styles)(ModalLoadingAlert);
 
 export default ModalLoadingAlertWrapped;

@@ -4,13 +4,9 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Files from "react-files";
 import Typography from "@material-ui/core/Typography";
-
 import ModalLoadingAlert from "../ModalLoadingAlert";
 import PDFProvider from "../../../lib/provider/pdfProvider";
 import { saveSync } from "save-file";
-import { docxpdf } from "docx-pdf";
-import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
-import axios from "axios";
 import AdComponent from "../../AdComponent";
 class MergePDFS extends Component {
   state = {
@@ -280,9 +276,6 @@ class MergePDFS extends Component {
             </Button>
           </Grid>
         </Grid>
-
-        {/* <AdComponent /> */}
-
         <ModalLoadingAlert
           isOpen={this.state.modalOpen}
           isLoading={this.state.modalLoading}

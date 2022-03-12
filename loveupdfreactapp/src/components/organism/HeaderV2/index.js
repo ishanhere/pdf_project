@@ -91,7 +91,7 @@ export default function App() {
     window.history.pushState({}, "", href);
     const navEvent = new PopStateEvent("popstate");
     window.dispatchEvent(navEvent);
-    location.reload();
+    // location.reload();
   };
 
   const handleClick = () => {
