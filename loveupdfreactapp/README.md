@@ -1,17 +1,7 @@
-# Merge & Split PDF React App
+# PDF React App
 
-Simple ReactJS serverless application that merges and splits PDFs.
-
-## Dependencies
-
-- @material-ui/core (latest)
-- pdf-lib (^0.6.1)
-- prop-types: (latest)
-- react: (latest)
-- react-dom: (latest)
-- react-files: (^2.4.8)
-- react-scripts: (latest)
-- save-file: (^2.3.1)
+Simple ReactJS serverless application.
+This platform incorporates several vital functionalities, including the ability to merge multiple PDF files into a single document, convert images to PDF format, convert Microsoft Word documents to PDF, convert PowerPoint presentations to PDF, and facilitate the compression of both images and PDF files.
 
 ## Install dependencies, running local server and building
 
@@ -20,17 +10,9 @@ $ npm i
 $ npm run start
 $ npm run build
 ```
+
 ## Start project serving via Nodes
 
 ```
 $ npm run dev
 ```
-
-## ToDo
-
-- PDF manipulation when metatags are not found (e.g. PDF 1.3 versions)
-- Enable to select which pages from a specific file to merge
-- Split feature
-
-## Demo application
-
