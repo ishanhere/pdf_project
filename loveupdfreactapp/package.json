@@ -1,8 +1,11 @@
 {
+  "homepage": "https://ishanhere.github.io/pdf_project/loveupdfreactapp",
   "name": "loveupdfreactapp",
   "version": "1.0.0",
   "description": "Different PDF Operations at one place.",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-app-rewired build",
     "test": "react-scripts test --env=jsdom",
@@ -18,7 +21,6 @@
   },
   "author": "https://github.com/ishanhere",
   "license": "MIT",
-  "homepage": "/",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -56,6 +58,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "react-app-rewired": "^2.1.11"
   }
 }
